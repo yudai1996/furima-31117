@@ -27,13 +27,13 @@
 | ----------------------- | ------------ | ----------------- |
 | name                    | name         | null: false       |
 | info                    | text         | null: false       |
-| category_id             |  integer     | null: false       |
+| category_id             | integer      | null: false       |
 | status_id               | integer      | null: false       |
 | shipping_fee_status_id  | integer      | null: false       |
 | prefecture_id           | integer      | null: false       |
 | delivery_scheduled_id   | integer      | null: false       |
 | price                   | integer      | null: false       |
-| user_id                 | references   | foreign_key: true |
+| use                     | references   | foreign_key: true |
 
 ### Association
 
@@ -56,6 +56,7 @@
 ### Association
 
 -belongs_to :user
+-belongs_to :item
 -has_one    :residence
 
 
