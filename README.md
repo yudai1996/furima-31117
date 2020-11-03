@@ -25,15 +25,14 @@
 
 | Colum                   | Type         | Options           |
 | ----------------------- | ------------ | ----------------- |
-| name                    | text         | null: false       |
+| name                    | name         | null: false       |
 | info                    | text         | null: false       |
 | category_id             |  integer     | null: false       |
-| status                  | string       | null: false       |
+| status_id               | integer      | null: false       |
 | shipping_fee_status_id  | integer      | null: false       |
 | prefecture_id           | integer      | null: false       |
 | delivery_scheduled_id   | integer      | null: false       |
 | price                   | integer      | null: false       |
-| image                   |              | null: false       |
 | user_id                 | references   | foreign_key: true |
 
 ### Association
@@ -41,14 +40,15 @@
 -belongs_to :user
 
 -category, status, shipping_fee_status, prefecture, delivery_scheduledに関しましてはActive Hashを用いるので、その場合のルールいに則る
+-imageカラムは作成しない：ActiveStorage使用の為
 
 
 ## ordersテーブル
 
 | Colum              | Type         | Options           |
 | ------------------ | ------------ | ----------------- |
-| item_id            | references   | foreign_key: true |
-| user_id            | references   | foreign_key: true |
+| item_id            | integer      | foreign_key: true |
+| user_id            | integer      | foreign_key: true |
 
 -外部apiのpay.jpを使用するので、カード情報は保存しない
  テーブルに保存すると漏洩する可能性があるので
@@ -66,11 +66,11 @@
 | ------------------ | ------------ | ----------------- |
 | postal_code        | string       | null: false       |
 | prefectures_id     | integer      | null: false       |
-| city               | text         | null: false       |
-| house_number       | text         | null: false       |
-| building           | text         |                   |
+| city               | string       | null: false       |
+| house_number       | string       | null: false       |
+| building           | string       |                   |
 | phone_number       | string       | null: false       |
-| order_id           | references   | foreign_key: true |
+| order_id           | integer      | foreign_key: true |
 
 
 -郵便番号は、string型→ハイフンを入力するので、0(頭文字)を受け付けない
