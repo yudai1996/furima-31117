@@ -4,60 +4,58 @@
 
 | Colum                       | Type    | Options     |
 | --------------------------- | ------- | ----------- |
-| name                        | string  | null: false |
-| email                       | string  | null: false |
-| password                    | text    | null: false |
-| password_confirmation       | text    | null: false |
+| nickname                    | string  | null: false |
+| email                       | string  | null: false | 
+| encrypted_password          | string  | null: false |
 | family_name_hira            | string  | null: false |
 | first_name_hira             | string  | null: false |
 | family_name_kata            | string  | null: false |
 | first_name_kata             | string  | null: false |
-| day_of_birthday             | integer | null: false |
+| day_of_birthday             | date    | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :orders
 
+-encrypted_password が存在するので、passwordとpassword_confirmationカラムは不要
+-date型:自動で何月日を連続で保存(例:2020-11-09)
 
 ## itemsテーブル
 
-| Colum                     | Type         | Options           |
-| ------------------------- | ------------ | ----------------- |
-| item_name                 | text         | null: false       |
-| item_info                 | text         | null: false       |
-| item_category             | string       | null: false       |
-| item_status               | string       | null: false       |
-| shipping_fee_status       | string       | null: false       |
-| item_prefecture           | string       | null: false       |
-| delivery_scheduled        | string       | null: false       |
-| item_price                | integer      | null: false       |
-| image                     |              | null: false       |
-| user_id                   | references   | foreign_key: true |
+| Colum                   | Type         | Options           |
+| ----------------------- | ------------ | ----------------- |
+| name                    | text         | null: false       |
+| info                    | text         | null: false       |
+| category_id             |  integer     | null: false       |
+| status                  | string       | null: false       |
+| shipping_fee_status_id  | integer      | null: false       |
+| prefecture_id           | integer      | null: false       |
+| delivery_scheduled_id   | integer      | null: false       |
+| price                   | integer      | null: false       |
+| image                   |              | null: false       |
+| user_id                 | references   | foreign_key: true |
 
 ### Association
 
--belongs_to :users
+-belongs_to :user
+
+-category, status, shipping_fee_status, prefecture, delivery_scheduledに関しましてはActive Hashを用いるので、その場合のルールいに則る
 
 
 ## ordersテーブル
 
 | Colum              | Type         | Options           |
 | ------------------ | ------------ | ----------------- |
-| card_number        | integer      | null: false       |
-| expiration_month   | integer      | null: false       |
-| expiration_year    | integer      | null: false       |
-| security_code      | integer      | null: false       |
 | item_id            | references   | foreign_key: true |
 | user_id            | references   | foreign_key: true |
 
-
-
+-外部apiのpay.jpを使用するので、カード情報は保存しない
+ テーブルに保存すると漏洩する可能性があるので
 
 ### Association
 
--belongs_to :users
--belong_to  :prototype
+-belongs_to :user
 -has_one    :residence
 
 
@@ -66,16 +64,19 @@
 
 | Colum              | Type         | Options           |
 | ------------------ | ------------ | ----------------- |
-| postal_code        | integer      | null: false       |
-| prefectures        | string       | null: false       |
+| postal_code        | string       | null: false       |
+| prefectures_id     | integer      | null: false       |
 | city               | text         | null: false       |
 | house_number       | text         | null: false       |
-| building           | text         | null: false       |
-| phone_number       | integer      | null: false       |
+| building           | text         |                   |
+| phone_number       | string       | null: false       |
+| order_id           | references   | foreign_key: true |
 
 
-
+-郵便番号は、string型→ハイフンを入力するので、0(頭文字)を受け付けない
+-任意入力欄はnillを許可
+-アソシエーションを組んでいるのでordersを外部キーで追加
 
 ### Association
 
--belongs_to :orders
+-belongs_to :order
