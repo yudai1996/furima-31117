@@ -8,7 +8,7 @@ class User < ApplicationRecord
   #新規登録/ユーザー情報
   validates :nickname,           presence: true
   validates :email,              uniqueness: true #DB側は未設定
-  validates :encrypted_password, confiration: true, format: { with: /\A[a-z][\d]\Z/}
+  validates :encrypted_password, confirmation: true, format: { with: /\A[a-z][\d]\Z/}
   
   #新規登録/本人情報確認
   validates :family_name_hira, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]\Z/ }
