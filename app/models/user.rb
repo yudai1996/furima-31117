@@ -7,7 +7,7 @@ class User < ApplicationRecord
   #バリデーションの設定（email,passはデフォルト）
   #新規登録/ユーザー情報
   validates :nickname,           presence: true
-  validates :email,              uniqueness: true #DB側は未設定
+  validates :email,              uniqueness: { case_sensitive: true } #DB側は未設定
   validates :encrypted_password, confirmation: true, format: { with: /\A[a-z][\d]\Z/}
   
   #新規登録/本人情報確認
