@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :nickname,           presence: true
   validates :email,              uniqueness: { case_sensitive: true } #DB側は未設定
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-validates_format_of :password, with: PASSWORD_REGEX
+  validates_format_of :password, with: PASSWORD_REGEX
   #validates :encrypted_password, confirmation: true, format: { with: /\A[a-z][\d]\Z/}
   
   #新規登録/本人情報確認
