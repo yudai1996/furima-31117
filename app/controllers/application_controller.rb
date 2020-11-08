@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
   def configure_permitted_parameters #deviseでのストロングパラメータの追加
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name_hira, :first_name_hira, :family_name_kata, :first_name_kata, :day_of_birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name_hira, :first_name_hira, :last_name_kata, :first_name_kata, :day_of_birthday])
   end
 
 end

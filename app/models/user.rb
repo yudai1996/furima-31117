@@ -13,9 +13,9 @@ class User < ApplicationRecord
   #validates :encrypted_password, confirmation: true, format: { with: /\A[a-z][\d]\Z/}
   
   #新規登録/本人情報確認
-  validates :family_name_hira, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
+  validates :last_name_hira, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
   validates :first_name_hira,  presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
-  validates :family_name_kata, presence: true, format: { with:/\A[ァ-ヶー－]+\z/ }
+  validates :last_name_kata, presence: true, format: { with:/\A[ァ-ヶー－]+\z/ }
   validates :first_name_kata,  presence: true, format: { with:/\A[ァ-ヶー－]+\z/ }
   validates :day_of_birthday,  presence: true
 
