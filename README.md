@@ -33,7 +33,7 @@
 | prefecture_id           | integer      | null: false       |
 | delivery_scheduled_id   | integer      | null: false       |
 | price                   | integer      | null: false       |
-| use                     | references   | foreign_key: true |
+| user                    | references   | foreign_key: true |
 
 ### Association
 
