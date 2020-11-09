@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  #アソシエーション
+  belongs_to :user
 
   #バリデーションの設定
   validates :name,                   presence: true
