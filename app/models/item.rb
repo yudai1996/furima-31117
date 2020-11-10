@@ -13,11 +13,11 @@ class Item < ApplicationRecord
   #バリデーションの設定
   validates :name,                   presence: true
   validates :info,                   presence: true
-  validates :category_id,            presence: true
-  validates :status_id,              presence: true
-  validates :shipping_fee_status_id, presence: true
-  validates :prefecture_id,          presence: true
-  validates :delivery_scheduled_id,  presence: true
+  validates :category_id,            presence: true, numericality: { other_than: 1 }
+  validates :status_id,              presence: true, numericality: { other_than: 1 }
+  validates :shipping_fee_status_id, presence: true, numericality: { other_than: 1 }
+  validates :prefecture_id,          presence: true, numericality: { other_than: 1 }
+  validates :delivery_scheduled_id,  presence: true, numericality: { other_than: 1 }
   validates :price,                  presence: true
   validates :image,                  presence: true
 end
