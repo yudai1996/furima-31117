@@ -18,6 +18,6 @@ class Item < ApplicationRecord
   validates :shipping_fee_status_id, presence: true, numericality: { other_than: 1 }
   validates :prefecture_id,          presence: true, numericality: { other_than: 1 }
   validates :delivery_scheduled_id,  presence: true, numericality: { other_than: 1 }
-  validates :price,                  presence: true
+  validates :price,                  presence: true, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 }
   validates :image,                  presence: true
 end
