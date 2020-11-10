@@ -17,5 +17,11 @@ class ItemsController < ApplicationController
       redorect_to 
     end
   end
+
+  private
+
+  def
+    params.require(item).permit(:name, :info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :delivery_scheduled_id, :price, :image).merge(user_id: current_user.id)
+  end
   
 end
