@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     if @item.save
       render:index
     else
-      redorect_to 
+      redorect_to new_item_path
     end
   end
 
