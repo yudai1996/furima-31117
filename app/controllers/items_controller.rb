@@ -8,5 +8,14 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+
+  def created
+    @item = Item.new(item_params)
+    if @item.save
+      render:index
+    else
+      redorect_to 
+    end
+  end
   
 end
