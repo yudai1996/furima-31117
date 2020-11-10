@@ -10,5 +10,9 @@ FactoryBot.define do
     price                  {"4000"}
 
     association :user #ユーザーデータも同時に作成する為の記述
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('app/assets/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end
