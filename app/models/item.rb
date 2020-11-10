@@ -2,6 +2,14 @@ class Item < ApplicationRecord
   #アソシエーション
   belongs_to :user
 
+  #アソシエーション(ActivHash)
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :delivery
+  belongs_to :prefecture
+  belongs_to :shipping_fee
+  belongs_to :status
+
   #バリデーションの設定
   validates :name,                   presence: true
   validates :info,                   presence: true
