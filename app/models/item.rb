@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   #アソシエーション
   belongs_to :user
+  has_one_attached :image
+
 
   #アソシエーション(ActivHash)
   extend ActiveHash::Associations::ActiveRecordExtensions
