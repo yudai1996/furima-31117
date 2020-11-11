@@ -7,9 +7,9 @@
 | nickname                    | string  | null: false |
 | email                       | string  | null: false | 
 | encrypted_password          | string  | null: false |
-| family_name_hira            | string  | null: false |
+| last_name_hira              | string  | null: false |
 | first_name_hira             | string  | null: false |
-| family_name_kata            | string  | null: false |
+| last_name_kata              | string  | null: false |
 | first_name_kata             | string  | null: false |
 | day_of_birthday             | date    | null: false |
 
@@ -25,7 +25,7 @@
 
 | Colum                   | Type         | Options           |
 | ----------------------- | ------------ | ----------------- |
-| name                    | name         | null: false       |
+| name                    | string       | null: false       |
 | info                    | text         | null: false       |
 | category_id             | integer      | null: false       |
 | status_id               | integer      | null: false       |
@@ -33,7 +33,7 @@
 | prefecture_id           | integer      | null: false       |
 | delivery_scheduled_id   | integer      | null: false       |
 | price                   | integer      | null: false       |
-| use                     | references   | foreign_key: true |
+| user                    | references   | foreign_key: true |
 
 ### Association
 
