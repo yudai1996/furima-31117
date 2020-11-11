@@ -13,13 +13,15 @@ class Item < ApplicationRecord
   belongs_to :status
 
   #バリデーションの設定
-  validates :name,                   presence: true
-  validates :info,                   presence: true
-  validates :category_id,            presence: true, numericality: { other_than: 1 }
-  validates :status_id,              presence: true, numericality: { other_than: 1 }
-  validates :shipping_fee_status_id, presence: true, numericality: { other_than: 1 }
-  validates :prefecture_id,          presence: true, numericality: { other_than: 1 }
-  validates :delivery_scheduled_id,  presence: true, numericality: { other_than: 1 }
-  validates :price,                  presence: true, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 }
-  validates :image,                  presence: true
+  with_options presence: true do
+    validates :name
+    validates :info
+    validates :category_id,            numericality: { other_than: 1 }
+    validates :status_id,              numericality: { other_than: 1 }
+    validates :shipping_fee_status_id, numericality: { other_than: 1 }
+    validates :prefecture_id,          numericality: { other_than: 1 }
+    validates :delivery_scheduled_id,  numericality: { other_than: 1 }
+    validates :price,                  format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 }
+    validates :image
+  end
 end
