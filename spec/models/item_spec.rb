@@ -27,51 +27,62 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
 
-      it "カテゴリーが未選択の時（idが１,nillの時失敗）" do 
+      it "カテゴリーが未選択の時（idが１の時失敗）" do 
         @item.category_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
 
+      it "カテゴリーが未選択の時（idがnillの時失敗）" do 
         @item.category_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
-      it "商品の状態が未選択の時（idが１,nilの時失敗）" do 
+      it "商品の状態が未選択の時（idが１の時失敗）" do 
         @item.status_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Status must be other than 1")
+      end
 
+      it "商品の状態が未選択の時（idがnilの時失敗）" do 
         @item.status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank", )
       end
 
-      it "配送料の負担が未選択の時（idが１,nilの時失敗）" do 
+      it "配送料の負担が未選択の時（idが１の時失敗）" do 
         @item.shipping_fee_status_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee status must be other than 1")
+      end
 
+      it "配送料の負担が未選択の時（idがnilの時失敗）" do 
         @item.shipping_fee_status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
       end
 
-      it "配送元の地域が未選択の時（idが１,nilの時失敗）" do 
+
+      it "配送元の地域が未選択の時（idが１の時失敗）" do 
         @item.prefecture_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+      end
 
+      it "配送元の地域が未選択の時（idがnilの時失敗）" do 
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      it "配送までの日数が未選択の時（idが１,nilの時失敗）" do 
+      it "配送までの日数が未選択の時（idが１の時失敗）" do 
         @item.delivery_scheduled_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery scheduled must be other than 1")
+      end
 
+      it "配送までの日数が未選択の時（idがnilの時失敗）" do 
         @item.delivery_scheduled_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery scheduled can't be blank")
