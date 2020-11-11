@@ -75,6 +75,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
 
+      it "priceに文字列記入時登録失敗" do #追加したテスト内容
+        @item.price = "price"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+
       it "imageが空の時登録失敗" do
         @item.image = nil
         @item.valid?
