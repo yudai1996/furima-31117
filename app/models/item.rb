@@ -7,9 +7,9 @@ class Item < ApplicationRecord
   #アソシエーション(ActivHash)
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :delivery
+  belongs_to :delivery_scheduled
   belongs_to :prefecture
-  belongs_to :shipping_fee
+  belongs_to :shipping_fee_status
   belongs_to :status
 
   #バリデーションの設定
