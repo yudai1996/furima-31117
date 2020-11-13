@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order("created_at DESC") #一覧表示用の一時収納箱用意、並び順を降順へ
@@ -33,6 +33,15 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    unless current_user.id == @item.user_id 
+      redirect_to root_path
+    else
+      @item.destroy
+      redirect_to root_path
     end
   end
 
