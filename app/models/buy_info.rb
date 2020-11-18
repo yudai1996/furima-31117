@@ -21,5 +21,10 @@ class BuyInfo
     validates :exp_year
     validates :cvc
   end
+
+  def save
+    Order.create(item_id: item_id, user_id: user_id)
+    Residence.create(postal_code: postal_code, prefectures_id: prefectures_id, city: city, house_number: house_number, building: building, phone_number: phone_number, order_id: order_id )
+  end
   
 end
