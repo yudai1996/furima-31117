@@ -1,7 +1,7 @@
 class BuyInfo
   include ActiveModel::Model
   #ordersテーブルとresidencesテーブルのカラム名記述
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :order_id
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :order_id, :number, :exp_month, :exp_year, :cvc
 
   #バリデーションの設定(配送先住所)
   with_options presence: true do
