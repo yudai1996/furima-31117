@@ -1,19 +1,20 @@
 class BuyInfo
   include ActiveModel::Model
   #ordersテーブルとresidencesテーブルのカラム名記述
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :order_id, 
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :order_id
 
   #バリデーションの設定(配送先住所)
-   with_options presence: true do
+  with_options presence: true do
     validates :postal_code,    format: {with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :house_number
     #任意入力 validates :building
-    validates :phone_number,   format: { with: \A0[5789]0[-]?\d{4}[-]?\d{4}\z }
+    validates :phone_number,   format: { with: /\A\d{10,11}\z/ }
   end
   #バリデーション(token)
-  validates :token, presence: true
+  #validates :token, presence: true
+
   #バリエーション(カード情報)
   with_options presence: true do
     validates :number
