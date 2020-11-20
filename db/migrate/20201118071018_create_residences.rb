@@ -7,7 +7,6 @@ class CreateResidences < ActiveRecord::Migration[6.0]
       t.string  :house_number,   null: false
       t.string  :building,       null: false
       t.string  :phone_number,   null: false
-      t.integer :order_id,       foreign_key: true
       t.timestamps
     end
   end
