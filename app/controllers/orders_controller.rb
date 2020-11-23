@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def create
     @buy_info = BuyInfo.new(buy_params)
     if @buy_info.valid?
+      pay_item
       @buy_info.save
       redirect_to root_path
     else
@@ -23,6 +24,17 @@ class OrdersController < ApplicationController
   private
 
     def buy_params
-      params.require(:buy_info).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :item_id).merge(user_id: current_user.id)
+      params.require(:buy_info).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :item_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    end
+
+    def pay_item
+      #決済処理の記述
+      @item = Item.find(params[:item_id])
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: buy_params[:token],
+        currency: 'jpy'
+      )
     end
 end
