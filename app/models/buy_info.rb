@@ -16,7 +16,7 @@ class BuyInfo
   end
 
   def save
-    Residence.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building: building, phone_number: phone_number, id: id, created_at: created_at, updated_at: updated_at)
+    Residence.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building: building, phone_number: phone_number)
     Order.create(item_id: item_id, user_id: user_id)
   end
 end
