@@ -1,6 +1,6 @@
 class BuyInfo  
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :number, :exp_month, :exp_year, :cvc, :id, :created_at, :updated_at, :token
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :token
 
   #バリデーションの設定(配送先住所)
   with_options presence: true do
