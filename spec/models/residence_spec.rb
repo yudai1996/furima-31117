@@ -11,6 +11,11 @@ RSpec.describe Residence, type: :model do
         it "各項目が存在すれば登録できる" do
           expect(@order).to be_valid
         end
+
+        it "buildingが空でも登録できる" do
+          @order.building = nil
+          expect(@order).to be_valid
+        end
       end
 
       context '商品購入が失敗するとき' do
