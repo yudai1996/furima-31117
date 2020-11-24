@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order("created_at DESC") #一覧表示用の一時収納箱用意、並び順を降順へ
+    @order = Order.all
   end
 
   def new
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @item.user_id 
+    if @item.order.present? || urrent_user.id == @item.user_id 
       redirect_to root_path
     end
   end

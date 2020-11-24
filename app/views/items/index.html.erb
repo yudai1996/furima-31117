@@ -132,12 +132,11 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# image_tag "item-sample.png", class: "item-img" %> <%# sold_out画像の機能実装まで一時非表示%>
+          <% if item.order.present? %> 
           <div class='sold-out'>
-            <span style="display:none">Sold Out!!</span> <!-sold_outの一時非表示->
+            <span>Sold Out!!</span> 
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          <% end %>
 
         </div>
         <div class='item-info'>
