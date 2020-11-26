@@ -71,3 +71,4 @@ gem 'faker'
 gem "gimei"
 gem 'active_hash'
 gem "payjp"
+gem "aws-sdk-s3", require: false
